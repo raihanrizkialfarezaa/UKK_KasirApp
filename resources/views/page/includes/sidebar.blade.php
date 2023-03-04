@@ -3,7 +3,7 @@
     <div data-simplebar class="h-100">
 
         <div class="navbar-brand-box">
-            <a href="index.html" class="logo">
+            <a href="/dashboard" class="logo">
                 <i class="mdi mdi-album"></i>
                 <span>
                     Kasir App

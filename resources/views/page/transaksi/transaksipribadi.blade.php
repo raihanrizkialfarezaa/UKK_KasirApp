@@ -8,6 +8,7 @@
         <div class="row">
             <div class="col-md-12 ms-2 mb-3">
                 <a href="{{ route('transaksiview') }}" class="btn btn-primary">Tambah Data</a>
+                <a href="{{ route('konfirmasibayar') }}" class="btn btn-primary d-inline">Konfirmasi Pembayaran</a>
             </div>
             <div class="col-md-12">
                 <div class="table-responsive">

@@ -51,6 +51,9 @@ Route::get('/check-table', [TransaksiController::class, 'checkMejaView'])->middl
 Route::get('/check-table/{id}', [TransaksiController::class, 'changeMejaView'])->middleware('permission:check_table_number')->name('editmeja');
 Route::put('/update-table/{id}', [TransaksiController::class, 'changeStatusMeja'])->middleware('permission:check_table_number')->name('updatemeja');
 Route::get('/check-keuangan', [TransaksiController::class, 'laporanKeuangan'])->middleware('permission:cek_keuangan')->name('cek_keuangan');
+Route::get('/konfirmasipembayaran', [TransaksiController::class, 'konfirmasiPembayaranView'])->middleware('permission:do_transaction')->name('konfirmasibayar');
+Route::get('/konfirmasi-pembayaran/{id}', [TransaksiController::class, 'konfirmasiPembayaranEditView'])->middleware('permission:do_transaction')->name('konfirmasi-pembayaran');
+Route::put('/konfirmasipembayaran/{id}', [TransaksiController::class, 'konfirmasiPembayaran'])->middleware('permission:do_transaction')->name('konfirmasiupdate');
 
 Route::resource('menu', MenuController::class);
 

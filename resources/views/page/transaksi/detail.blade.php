@@ -23,6 +23,12 @@
                                     <td>{{ $row->menu->pluck('harga')[0] }}</td>
                                 </tr>
                                 @endforeach
+                                <tr>
+                                    <td> Total </td>
+                                    <td colspan="1">
+                                        <td>{{ $transaksi->total_harga }}</td>
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
                 </div>

@@ -9,7 +9,7 @@
 
         <div class="row">
                 <div class="col-md-12 mt-3 mb-4">
-                    <form class="" action="/see-all-transaction" method="GET">
+                    <form class="" action="/check-keuangan" method="GET">
                         <div class="m-0">
                             <div class="input-group">
                                 <div class="col-md-6 form-group">
@@ -32,12 +32,8 @@
                                     <thead class="thead-light">
                                         <tr>
                                             <th>Tanggal Transaksi</th>
-                                            <th>Nomor Meja</th>
-                                            <th>Nama Kasir</th>
-                                            <th>Nama Pelanggan</th>
                                             <th>Status</th>
                                             <th>Total Harga</th>
-                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -45,12 +41,8 @@
                                             @forelse ($data['data'] as $row)
                                                 <tr>
                                                     <td>{{ $row->tgl_transaksi }}</td>
-                                                    <td>{{ $row->meja->nomor_meja }}</td>
-                                                    <td>{{ $row->user->name }}</td>
-                                                    <td>{{ $row->nama_pelanggan }}</td>
                                                     <td>{{ $row->status }}</td>
                                                     <td>{{ $row->total_harga }}</td>
-                                                    <td><a href="{{ route('detail-transaksi', $row->id) }}" class="btn btn-primary">Detail</a></td>
                                                 </tr>
                                             @empty
                                                 <tr>
@@ -58,12 +50,12 @@
                                                 </tr>
                                             @endforelse
                                         </tr>
-                                        @if ($data['data']->count() > 0)
-                                            <tr>
-                                                <th colspan="5">Total Bayar</th>
+                                        <tr>
+                                            <th class="thead-light">Total Pemasukan</th>
+                                            <td colspan="1">
                                                 <td>{{ $data['total'] }}</td>
-                                            </tr>
-                                        @endif
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

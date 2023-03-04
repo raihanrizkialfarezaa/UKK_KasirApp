@@ -9,6 +9,7 @@ use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade\Pdf;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Date;
@@ -103,8 +104,9 @@ class TransaksiController extends Controller
     public function lihatDetailTransaksi(string $id) 
     {
         $detail = DetailTransaksi::where('id_transaksi', $id)->get();
+        $transaksi = Transaksi::where('id', $id)->first();
         // dd($detail);
-        return view('page.transaksi.detail', compact('detail'));
+        return view('page.transaksi.detail', compact('detail','transaksi'));
     }
 
     public function transaksi(Request $request) 
@@ -168,6 +170,11 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::where('status', 'belum_bayar')->get();
         return view('page.transaksi.konfirmview', compact('transaksi'));
     }
+    public function konfirmasiPembayaranEditView(string $id) 
+    { 
+        $transaksi = Transaksi::where('id', $id)->first();
+        return view('page.transaksi.konfirmasi', compact('transaksi'));
+    }
 
     public function transaksiSukses(string $id) 
     { 
@@ -178,23 +185,31 @@ class TransaksiController extends Controller
     { 
         $transaksi = Transaksi::where('id', $id)->first();
         $data['total_harga'] = $transaksi->total_harga;
+        $data['total_bayar'] = $transaksi->total_bayar;
+        $data['id_transaksi'] = 'FJ - ' .Str::random(10);
         $data['nama_pelanggan'] = $transaksi->nama_pelanggan;
         $data['item'] = DetailTransaksi::where('id_transaksi', $id)->get();
-        $pdf = Pdf::loadView('page.pdf.invoice', $data)->setPaper([0, 0, 227, 427], 'potrait');
+        $pdf = Pdf::loadView('page.pdf.invoice', $data)->setPaper([0, 0, 237, 437], 'potrait');
         return $pdf->download('invoice.pdf');
     }
 
     public function konfirmasiPembayaran(Request $request, string $id) 
     { 
         $transaksi = Transaksi::where('id', $id)->first();
-        $update = $transaksi->update([
-            'status' => 'lunas',
-            'total_bayar' => $request->total_bayar,
-        ]);
+        if ($request->total_bayar < $transaksi->total_harga) {
+            Alert::error('Gagal Konfirmasi Pembayaran', 'Jumlah bayar kurang dari total yang harus di bayar');
+            return redirect()->route('konfirmasi-pembayaran', $id);
+        } else {
+            $update = $transaksi->update([
+                'status' => 'lunas',
+                'total_bayar' => $request->total_bayar,
+            ]);
+        }
+        
 
         if ($update) {
             Alert::success('Sukses Konfirmasi Pembayaran', 'Status Pembayaran anda berhasil di konfirmasi');
-            return redirect()->route('transaksi-sukses', $update->id);
+            return redirect()->route('transaksi-sukses', $id);
         } else {
             Alert::success('Gagal Konfirmasi Pembayaran', 'Status Pembayaran anda gagal di konfirmasi');
             return redirect()->route('transaksipribadi');

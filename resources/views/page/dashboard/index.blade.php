@@ -21,8 +21,8 @@
 
                 </div>
             </div>
-            @can('check-most')
-                <div class="mt-4 container" style="height: 800px; width: 1200px;" id="container"></div>
+            @can('check_most')
+            <div class="mt-4 container containera" style="height: 800px; width: 1200px;" id="container"></div>
             @endcan
         </div>
         <!-- end page title -->
@@ -54,7 +54,7 @@
                 },
                 series: [{
                     type: 'bar',
-                    name: 'Menu',
+                    name: 'penjualan',
                     data: [
                      @foreach ($penjualan as $row)
                         {
