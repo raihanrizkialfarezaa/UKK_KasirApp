@@ -10,15 +10,15 @@
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nama User</label>
-                            <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter menu name">
+                            <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama user">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter menu name">
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan email user">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Password</label>
-                            <input type="text" name="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter menu name">
+                            <input type="text" name="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Buat password">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Status</label>
