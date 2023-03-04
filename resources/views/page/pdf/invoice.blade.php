@@ -155,9 +155,14 @@
  
                             <tr class="tabletitle">
                                 <td></td>
-                                <td class="Rate"><h2>Total</h2></td>
+                                <td class="Rate"><h2>Total Harga</h2></td>
                                 <td class="payment"><h2>{{ number_format($total_harga) }},-</h2></td>
                             </tr>
+                            <tr class="tabletitle">
+                              <td></td>
+                              <td class="Rate"><h2>Total Bayar</h2></td>
+                              <td class="payment"><h2>{{ number_format($total_bayar) }},-</h2></td>
+                          </tr>
                             <tr class="tabletitle">
                                 <td></td>
                                 <td class="Rate"><h2>Kembalian</h2></td>
