@@ -72,10 +72,10 @@ class TransaksiController extends Controller
         if ($request->has('date_from') && $request->has('date_to')) {
             $data = [];
             $data['data'] = DB::table('transaksis')
-                    ->whereBetween('tgl_transaksi', [$date_from, $date_to])->orderBy('created_at', 'desc')
+                    ->whereBetween('tgl_transaksi', [$date_from, $date_to])->where('status','=','lunas')->orderBy('created_at', 'desc')
                     ->get();
             $data['total'] = DB::table('transaksis')
-                            ->whereBetween('tgl_transaksi', [$date_from, $date_to])
+                            ->whereBetween('tgl_transaksi', [$date_from, $date_to])->where('status','=','lunas')
                             ->sum('total_harga');
         } else {
             $data = [];
