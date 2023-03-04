@@ -208,6 +208,11 @@ class TransaksiController extends Controller
         
 
         if ($update) {
+            $transaksi = Transaksi::where('id', $id)->first();
+            $meja = Meja::where('id', $transaksi->id_meja)->first();
+            $updatemeja = $meja->update([
+                'status' => 1,
+            ]);
             Alert::success('Sukses Konfirmasi Pembayaran', 'Status Pembayaran anda berhasil di konfirmasi');
             return redirect()->route('transaksi-sukses', $id);
         } else {
