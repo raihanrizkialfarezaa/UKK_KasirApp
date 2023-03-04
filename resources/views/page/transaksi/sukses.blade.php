@@ -30,15 +30,15 @@
                                 <div class="col-lg-7">
                                     <div class="p-5">
                                         <div class="text-center mb-5">
-                                            <a href="index.html" class="text-dark font-size-22 font-family-secondary">
-                                                <i class="mdi mdi-alpha-x-circle"></i> <b>RizkiGroups.</b>
+                                            <a class="text-dark font-size-22 font-family-secondary">
+                                                <i class="fab fa-cc-discover"></i> <b>RizkiGroups Cafe</b>
                                             </a>
                                         </div>
                                         
                                         <div class="text-center">
-                                            <img src="assets/images/maintenance.svg" alt="error" height="180">
-                                            <h1 class="h4 mb-3 mt-4">Selamat transaksi kamu berhasil!</h1>
-                                            <p class="text-muted mb-4 w-75 m-auto">Transaksi atas nama {{ $transaksi->nama_pelanggan }} berhasil di lakukan!</p>
+                                            <img src="{{ url('assets/images/transactional-data.png') }}" height="180">
+                                            <h1 class="h4 mb-3 mt-4">Transaksi Atas Nama {{ $transaksi->nama_pelanggan }} Berhasil </h1>
+                                            <p class="text-muted mb-4 w-75 m-auto">Terima kasih telah membeli produk toko kami</p>
                                         </div>
 
                                         <div class="row mt-4">

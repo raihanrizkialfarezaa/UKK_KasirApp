@@ -26,7 +26,7 @@ class TransaksiController extends Controller
 
     public function transaksiPribadi() 
     { 
-        $transaksi = Transaksi::where('id_user', Auth::id())->get();
+        $transaksi = Transaksi::where('id_user', Auth::id())->orderBy('created_at', 'desc')->get();
 
         return view('page.transaksi.transaksipribadi', compact('transaksi'));
     }
@@ -34,31 +34,31 @@ class TransaksiController extends Controller
     { 
         if ($request->has('tanggal')) {
             // dd($request->tanggal);
-            $transaksi = Transaksi::whereDate('created_at', $request->tanggal)->get();
+            $transaksi = Transaksi::whereDate('created_at', $request->tanggal)->orderBy('created_at', 'desc')->get();
         } elseif($request->has('nama_karyawan')) {
-            $id = User::where('name', 'LIKE', '%' . $request->nama_karyawan . '%')->get();
+            $id = User::where('name', 'LIKE', '%' . $request->nama_karyawan . '%')->orderBy('created_at', 'desc')->get();
             // dd($request->nama_karyawan);
             if ($id->count() > 1) {
                 // dd($id);
                 $id_all = $id->id;
-                $transaksi = Transaksi::whereIn('id_user', $id->id)->get();
+                $transaksi = Transaksi::whereIn('id_user', $id->id)->orderBy('created_at', 'desc')->get();
                 if ($transaksi->count() > 0) {
-                    $transaksi = Transaksi::whereIn('id_user', $id->id)->get();
+                    $transaksi = Transaksi::whereIn('id_user', $id->id)->orderBy('created_at', 'desc')->get();
                 } else {
                     $transaksi = [];
                 }
             } else {
                 $id_all = $id[0]->id;
-                $transaksi = Transaksi::where('id_user', $id[0]->id)->get();
+                $transaksi = Transaksi::where('id_user', $id[0]->id)->orderBy('created_at', 'desc')->get();
                 if ($transaksi->count() > 0) {
-                    $transaksi = Transaksi::where('id_user', $id[0]->id)->get();
+                    $transaksi = Transaksi::where('id_user', $id[0]->id)->orderBy('created_at', 'desc')->get();
                 } else {
                     $transaksi = [];
                 }
             }
             
         } else {
-            $transaksi = Transaksi::all();
+            $transaksi = Transaksi::orderBy('created_at', 'desc')->get();
         }
         
 
@@ -157,7 +157,7 @@ class TransaksiController extends Controller
             }
 
             Alert::success('Transaksi Sukses', 'Transaksi Anda Berhasil Di Lakukan');
-            return redirect()->route('transaksi-sukses', $create->id);
+            return redirect()->route('pemesanan-sukses', $create->id);
         } else {
             Alert::error('Transaksi Gagal', 'Transaksi Anda Tidak Berhasil Di Lakukan');
             return redirect()->route('transaksipribadi');
@@ -165,9 +165,17 @@ class TransaksiController extends Controller
         
     }
 
+    public function pemesananSukses(string $id) 
+    { 
+        $transaksi = Transaksi::where('id', $id)->first();
+        $detail = DetailTransaksi::where('id_transaksi',$id)->get();
+        $meja = Meja::where('id',$transaksi->id_meja)->first();
+        return view('page.transaksi.pemesanansukses', compact('transaksi','detail','meja'));
+    }
+
     public function konfirmasiPembayaranView() 
     { 
-        $transaksi = Transaksi::where('status', 'belum_bayar')->get();
+        $transaksi = Transaksi::where('status', 'belum_bayar')->orderBy('created_at', 'desc')->get();
         return view('page.transaksi.konfirmview', compact('transaksi'));
     }
     public function konfirmasiPembayaranEditView(string $id) 

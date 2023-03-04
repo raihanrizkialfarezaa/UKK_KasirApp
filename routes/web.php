@@ -44,6 +44,7 @@ Route::get('/cek-harga/{id}', [TransaksiController::class, 'cekHarga'])->middlew
 Route::get('/transaction', [TransaksiController::class, 'transaksiView'])->middleware('permission:do_transaction')->name('transaksiview');
 Route::get('/see-transaction', [TransaksiController::class, 'transaksiPribadi'])->middleware('permission:see_private_transaction')->name('transaksipribadi');
 Route::get('/transaksi-sukses/{id}', [TransaksiController::class, 'transaksiSukses'])->middleware('permission:do_transaction')->name('transaksi-sukses');
+Route::get('/pemesanan-sukses/{id}', [TransaksiController::class, 'pemesananSukses'])->middleware('permission:do_transaction')->name('pemesanan-sukses');
 Route::get('/cetak-nota/{id}', [TransaksiController::class, 'cetakNota'])->middleware('permission:cetak_nota')->name('cetak-nota');
 Route::get('/see-all-transaction', [TransaksiController::class, 'transaksiSemua'])->middleware('permission:see_all_transaction')->name('transaksisemua');
 Route::get('/see-detail-transaction/{id}', [TransaksiController::class, 'lihatDetailTransaksi'])->middleware(['permission:see_private_transaction|see_all_transaction'])->name('detail-transaksi');
