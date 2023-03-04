@@ -192,12 +192,14 @@ class TransaksiController extends Controller
     public function cetakNota(string $id) 
     { 
         $transaksi = Transaksi::where('id', $id)->first();
+        $data['name'] = $transaksi->user->name;
+        $data['tanggal_transaksi'] = $transaksi->tgl_transaksi;
         $data['total_harga'] = $transaksi->total_harga;
         $data['total_bayar'] = $transaksi->total_bayar;
         $data['id_transaksi'] = 'FJ - ' .Str::random(10);
         $data['nama_pelanggan'] = $transaksi->nama_pelanggan;
         $data['item'] = DetailTransaksi::where('id_transaksi', $id)->get();
-        $pdf = Pdf::loadView('page.pdf.invoice', $data)->setPaper([0, 0, 237, 437], 'potrait');
+        $pdf = Pdf::loadView('page.pdf.invoice', $data)->setPaper([0, 0, 277, 477], 'potrait');
         return $pdf->download('invoice.pdf');
     }
 

@@ -26,7 +26,11 @@
                     <div class="d-flex align-items-center min-vh-100">
                         <div class="w-100 d-block bg-white shadow-lg rounded my-5">
                             <div class="row">
-                                <div class="col-lg-5 d-none d-lg-block bg-login rounded-left"></div>
+                                <div class="col-lg-5 d-none d-lg-block bg-login rounded-left">
+                                    <div class="mt-4 ml-4">
+                                        <img src="{{ url('assets/images/money.png') }}" height="400" width="400">
+                                    </div>
+                                </div>
                                 <div class="col-lg-7">
                                     <div class="p-5">
                                         <div class="text-center mb-5">
@@ -43,9 +47,9 @@
 
                                         <div class="row mt-4">
                                             <div class="col-12 text-center">
-                                                <a href="{{ route('transaksipribadi') }}" class="btn btn-success"><i class="mdi mdi-email mr-2"></i>Kembali</a>
+                                                <a href="{{ route('transaksipribadi') }}" class="btn btn-success"><i class="mdi mdi-keyboard-backspace mr-2"></i>Kembali</a>
                                                 @if ($transaksi->status === 'lunas')
-                                                <a href="{{ route('cetak-nota', $transaksi->id) }}" class="btn btn-success"><i class="mdi mdi-email mr-2"></i>Cetak Nota</a>
+                                                <a href="{{ route('cetak-nota', $transaksi->id) }}" class="btn btn-success"><i class="mdi mdi-printer-settings mr-2"></i>Cetak Nota</a>
                                                 @endif
                                             </div> <!-- end col -->
                                         </div>

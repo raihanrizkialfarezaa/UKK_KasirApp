@@ -50,24 +50,10 @@
   min-height: 100px;
 }
 #invoice-POS #mid {
-  min-height: 80px;
+  min-height: 10px;
 }
 #invoice-POS #bot {
   min-height: 50px;
-}
-#invoice-POS #top .logo {
-  height: 40px;
-  width: 150px;
-  background: url(https://www.sistemit.com/wp-content/uploads/2020/02/SISTEMITCOM-smlest.png) no-repeat;
-  background-size: 150px 40px;
-}
-#invoice-POS .clientlogo {
-  float: left;
-  height: 60px;
-  width: 60px;
-  background: url(https://www.sistemit.com/wp-content/uploads/2020/02/SISTEMITCOM-smlest.png) no-repeat;
-  background-size: 60px 60px;
-  border-radius: 50px;
 }
 #invoice-POS .info {
   display: block;
@@ -125,7 +111,7 @@
     <center id="top">
       <div class="logo"></div>
       <div class="info"> 
-        <h2>WikusamaCafe.com</h2>
+        <h2>Rizkigroups Cafe</h2>
       </div><!--End Info-->
     </center><!--End InvoiceTop-->
  
@@ -135,11 +121,13 @@
         <p> 
            Nama Pelanggan : {{ $nama_pelanggan }}</br>
         </p>
-      </div>
-      <div class="info">
         <h2>Id Transaksi</h2>
         <p> 
            Id Transaksi : {{ $id_transaksi }}</br>
+        </p>
+        <h2>Tanggal Transaksi</h2>
+        <p> 
+           Tanggal Transaksi : {{ $tanggal_transaksi }}</br>
         </p>
       </div>
     </div><!--End Invoice Mid-->
