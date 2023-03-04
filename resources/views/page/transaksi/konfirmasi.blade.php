@@ -2,8 +2,11 @@
 @section('title', 'Konfirmasi Pembayaran')
 @section('content')
     <div class="page-content">
-        <div class="container-fluid">
+        <div class="container-fluid">        
             <h1 class="mb-4">Konfirmasi Pembayaran</h1>
+            <div>
+                <h3 class="mb-5 mt-5">Total Tagihan : {{ $transaksi->total_harga }} Rupiah </h3>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <form action="{{ route('konfirmasiupdate', $transaksi->id) }}" method="POST" enctype="multipart/form-data">

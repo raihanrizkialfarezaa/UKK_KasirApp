@@ -179,7 +179,8 @@ class TransaksiController extends Controller
     public function konfirmasiPembayaranEditView(string $id) 
     { 
         $transaksi = Transaksi::where('id', $id)->first();
-        return view('page.transaksi.konfirmasi', compact('transaksi'));
+        $tagihan = Transaksi::where('id',$id)->get();
+        return view('page.transaksi.konfirmasi', compact('transaksi','tagihan'));
     }
 
     public function transaksiSukses(string $id) 
