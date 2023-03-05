@@ -6,7 +6,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-right d-none d-sm-block">
-                    Design & Develop by Raihan Rizki Alfareza
+                    Designed & Developed by Raihan Rizki Alfareza
                 </div>
             </div>
         </div>
