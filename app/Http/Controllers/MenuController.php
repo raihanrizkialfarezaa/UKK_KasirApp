@@ -39,7 +39,7 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['gambar'] = $request->file('gambar')->store('menu');
+        $data['gambar'] = $request->file('gambar')->store('uploads/menu');
         $create = Menu::create($data);
 
         if ($create) {
@@ -91,7 +91,7 @@ class MenuController extends Controller
                 'nama_menu' => $request->nama_menu,
                 'jenis' => $request->jenis,
                 'deskripsi' => $request->deskripsi,
-                'gambar' => $request->file('gambar')->store('menu'),
+                'gambar' => $request->file('gambar')->store('uploads/menu'),
                 'harga' => $request->harga,
             ]);
         }

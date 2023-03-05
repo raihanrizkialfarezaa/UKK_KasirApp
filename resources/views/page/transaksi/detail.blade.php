@@ -11,6 +11,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>Nama Menu</th>
+                                <th>Gambar</th>
                                 <th>Jumlah</th>
                                 <th>Harga</th>
                             </tr>
@@ -19,14 +20,18 @@
                                 @foreach ($detail as $row)
                                 <tr>
                                     <td>{{ $row->menu->pluck('nama_menu')[0] }}</td>
+                                    <td><img src="{{ asset('/storage/' .$row->menu->pluck('gambar')[0]) }}" height="100" alt="">
                                     <td>{{ $row->quantity }}</td>
-                                    <td>{{ $row->menu->pluck('harga')[0] }}</td>
+                                    <td>Rp{{ number_format($row->menu->pluck('harga')[0]) }}</td>
+                                    </td>
                                 </tr>
                                 @endforeach
                                 <tr>
-                                    <td> Total </td>
-                                    <td colspan="1">
-                                        <td>{{ $transaksi->total_harga }}</td>
+                                    <td>
+                                        <b>Total</b>
+                                    </td>
+                                    <td colspan="2">
+                                        <td>Rp{{ number_format($transaksi->total_harga) }}</td>
                                     </td>
                                 </tr>
                         </tbody>

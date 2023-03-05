@@ -30,7 +30,7 @@
                                         <td>{{ $row->meja->nomor_meja }}</td>
                                         <td>{{ $row->nama_pelanggan }}</td>
                                         <td>{{ $row->status }}</td>
-                                        <td>{{ number_format($row->total_harga)}}</td>
+                                        <td>Rp{{ number_format($row->total_harga)}}</td>
                                         <td><a href="{{ route('konfirmasi-pembayaran', $row->id) }}" class="btn btn-primary">Konfirmasi Pembayaran</a></td>
                                     </tr>
                                 @empty

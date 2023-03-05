@@ -31,7 +31,7 @@
                                         <td>{{ $row->meja->nomor_meja }}</td>
                                         <td>{{ $row->nama_pelanggan }}</td>
                                         <td>{{ $row->status }}</td>
-                                        <td>{{ $row->total_harga }}</td>
+                                        <td>Rp{{ number_format($row->total_harga) }}</td>
                                         <td><a href="{{ route('detail-transaksi', $row->id) }}" class="btn btn-primary">Detail</a></td>
                                     </tr>
                                 @empty
