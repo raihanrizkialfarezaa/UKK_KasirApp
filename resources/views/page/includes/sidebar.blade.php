@@ -18,7 +18,7 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="index.html" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
+                    <a href="/dashboard" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
                             class="badge badge-pill badge-primary float-right">7</span><span>Dashboard</span></a>
                 </li>
 
