@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -16,6 +17,13 @@ class DashboardController extends Controller
                         ->orderBy('total', 'asc')
                         ->get();
         // dd($penjualan);
-        return view('page.dashboard.index', compact('penjualan'));
+        if (Auth::user()->hasRole('manajer')) {
+            return view('page.dashboard.index', compact('penjualan'));
+        } elseif(Auth::user()->hasRole('kasir')) {
+            return redirect()->route('transaksipribadi');
+        } else {
+            return redirect()->route('menu.index');
+        }
+        
     }
 }

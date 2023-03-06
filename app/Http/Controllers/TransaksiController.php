@@ -37,24 +37,31 @@ class TransaksiController extends Controller
             $transaksi = Transaksi::whereDate('created_at', $request->tanggal)->orderBy('created_at', 'desc')->get();
         } elseif($request->has('nama_karyawan')) {
             $id = User::where('name', 'LIKE', '%' . $request->nama_karyawan . '%')->orderBy('created_at', 'desc')->get();
-            // dd($request->nama_karyawan);
-            if ($id->count() > 1) {
-                // dd($id);
-                $id_all = $id->id;
-                $transaksi = Transaksi::whereIn('id_user', $id->id)->orderBy('created_at', 'desc')->get();
-                if ($transaksi->count() > 0) {
+            if ($id->count() > 0) {
+                if ($id->count() > 1) {
+                    // dd($id);
+                    $id_all = $id->id;
                     $transaksi = Transaksi::whereIn('id_user', $id->id)->orderBy('created_at', 'desc')->get();
+                    if ($transaksi->count() > 0) {
+                        $transaksi = Transaksi::whereIn('id_user', $id->id)->orderBy('created_at', 'desc')->get();
+                    } else {
+                        $transaksi = [];
+                    }
                 } else {
-                    $transaksi = [];
+                    $id_all = $id[0]->id;
+                    $transaksi = Transaksi::where('id_user', $id[0]->id)->orderBy('created_at', 'desc')->get();
+                    if ($transaksi->count() > 0) {
+                        $transaksi = Transaksi::where('id_user', $id[0]->id)->orderBy('created_at', 'desc')->get();
+                    } else {
+                        $transaksi = [];
+                    }
                 }
             } else {
-                $id_all = $id[0]->id;
-                $transaksi = Transaksi::where('id_user', $id[0]->id)->orderBy('created_at', 'desc')->get();
-                if ($transaksi->count() > 0) {
-                    $transaksi = Transaksi::where('id_user', $id[0]->id)->orderBy('created_at', 'desc')->get();
-                } else {
-                    $transaksi = [];
-                }
+                $transaksi = Transaksi::where('nama_pelanggan', 'LIKE', '%' . $request->nama_karyawan . '%')->orderBy('created_at', 'DESC')->get();
+                // if ($transaksi) {
+                //     $transaksi = [];
+                // }
+                
             }
             
         } else {
