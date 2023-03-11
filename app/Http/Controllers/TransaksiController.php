@@ -56,12 +56,8 @@ class TransaksiController extends Controller
                         $transaksi = [];
                     }
                 }
-            } else {
+            }else{
                 $transaksi = Transaksi::where('nama_pelanggan', 'LIKE', '%' . $request->nama_karyawan . '%')->orderBy('created_at', 'DESC')->get();
-                // if ($transaksi) {
-                //     $transaksi = [];
-                // }
-                
             }
             
         } else {
@@ -140,6 +136,7 @@ class TransaksiController extends Controller
             'nama_pelanggan' => $request->nama_pelanggan,
             'status' => $request->status,
             'total_harga' => $value,
+            'nomor_pemesanan' => 'FJ -' . Str::random(10),
         ]);
 
         if ($create) {

@@ -19,6 +19,7 @@
                                 <th>Nomor Meja</th>
                                 <th>Nama Pelanggan</th>
                                 <th>Status</th>
+                                <th>Nomor Pemesanan</th>
                                 <th>Total Harga</th>
                                 <th>Aksi</th>
                             </tr>
@@ -31,6 +32,7 @@
                                         <td>{{ $row->meja->nomor_meja }}</td>
                                         <td>{{ $row->nama_pelanggan }}</td>
                                         <td>{{ $row->status }}</td>
+                                        <td>{{ $row->nomor_pemesanan }}</td>
                                         <td>Rp{{ number_format($row->total_harga) }}</td>
                                         <td><a href="{{ route('detail-transaksi', $row->id) }}" class="btn btn-primary">Detail</a></td>
                                     </tr>

@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -42,6 +43,7 @@ class UserController extends Controller
         $data['password'] = bcrypt($request->password);
         $data['remember_token'] = Str::random(10);
         $data['email_verified_at'] = Date::now();
+        $data['gambar'] = $request->file('gambar')->store('uploads/users');
 
         $user = User::create($data);
 
@@ -94,18 +96,39 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)->first();
 
-        if (!empty($request->password)) {
-            $update = $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => bcrypt($request->password),
-            ]);
+        if (empty($request->file('gambar'))) {
+            if (!empty($request->password)) {
+                $update = $user->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                ]);
+            } else {
+                $update = $user->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                ]);
+            }
         } else {
-            $update = $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-            ]);
+            // dd($request->file('gambar'));
+            if (!empty($request->password)) {
+                $update = $user->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                    'gambar' => $request->file('gambar')->store('uploads/users'),
+                ]);
+                // dd($update);
+            } else {
+                $update = $user->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'gambar' => $request->file('gambar')->store('uploads/users'),
+                ]);
+                // dd($update);
+            }
         }
+        
         
 
         if ($update) {

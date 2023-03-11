@@ -22,6 +22,10 @@
                             <input type="text" name="password" class="form-control">
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">Gambar</label>
+                            <input type="file" name="gambar" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Buat password">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">Status</label>
                             <select name="status" class="form-control">
                                 <option value="admin">Admin</option>

@@ -139,7 +139,7 @@
                             <tr class="tabletitle">
                                 <td class="item"><h2>Item</h2></td>
                                 <td class="Hours"><h2>Qty</h2></td>
-                                <td class="Rate"><h2>Sub Total</h2></td>
+                                <td class="Rate"><h2>Harga</h2></td>
                             </tr>
  
                             @foreach ($item as $row)
@@ -149,24 +149,24 @@
                                     @php
                                         $harga = $row->menu->pluck('harga')[0];
                                     @endphp
-                                    <td class="tableitem"><p class="itemtext">Rp. {{ number_format($harga) }},-</p></td>
+                                    <td class="tableitem"><p class="itemtext">Rp{{ number_format($harga) }},</p></td>
                                 </tr>
                             @endforeach
  
                             <tr class="tabletitle">
                                 <td></td>
-                                <td class="Rate"><h2>Total Harga</h2></td>
-                                <td class="payment"><h2>{{ number_format($total_harga) }},-</h2></td>
+                                <td class="Rate"><h2>Subtotal</h2></td>
+                                <td class="payment"><h2>Rp{{ number_format($total_harga) }},</h2></td>
                             </tr>
                             <tr class="tabletitle">
                               <td></td>
                               <td class="Rate"><h2>Total Bayar</h2></td>
-                              <td class="payment"><h2>{{ number_format($total_bayar) }},-</h2></td>
+                              <td class="payment"><h2>Rp{{ number_format($total_bayar) }},</h2></td>
                           </tr>
                             <tr class="tabletitle">
                                 <td></td>
                                 <td class="Rate"><h2>Kembalian</h2></td>
-                                <td class="payment"><h2>{{ number_format($total_bayar - $total_harga) }},-</h2></td>
+                                <td class="payment"><h2>Rp{{ number_format($total_bayar - $total_harga) }},</h2></td>
                             </tr>
  
                         </table>
