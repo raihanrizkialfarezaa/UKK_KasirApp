@@ -123,7 +123,7 @@
         </p>
         <h2>Id Transaksi</h2>
         <p> 
-           Id Transaksi : {{ $id_transaksi }}</br>
+           Id Transaksi : {{ $nomor_pemesanan }}</br>
         </p>
         <h2>Tanggal Transaksi</h2>
         <p> 

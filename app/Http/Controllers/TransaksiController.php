@@ -201,6 +201,7 @@ class TransaksiController extends Controller
         $data['total_bayar'] = $transaksi->total_bayar;
         $data['id_transaksi'] = 'FJ - ' .Str::random(10);
         $data['nama_pelanggan'] = $transaksi->nama_pelanggan;
+        $data['nomor_pemesanan'] = $transaksi->nomor_pemesanan;
         $data['item'] = DetailTransaksi::where('id_transaksi', $id)->get();
         $pdf = Pdf::loadView('page.pdf.invoice', $data)->setPaper([0, 0, 277, 477], 'potrait');
         return $pdf->download('invoice.pdf');
