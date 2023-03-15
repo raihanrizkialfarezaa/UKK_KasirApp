@@ -31,6 +31,18 @@ Route::get('/', function () {
 
 //     $manajer = Role::findByName('manajer');
 //     $kasir = Role::findByName('kasir');
+//     $admin = Role::findByName('admin');
+
+//     $admin->givePermissionTo('crud_user');
+//         $admin->givePermissionTo('crud_menu');
+//         $admin->givePermissionTo('crud_table');
+//         $manajer->givePermissionTo('see_all_transaction');
+//         $manajer->givePermissionTo('check_most');
+//         $kasir->givePermissionTo('change_payment');
+//         $kasir->givePermissionTo('do_transaction');
+//         $kasir->givePermissionTo('see_private_transaction');
+//         $kasir->givePermissionTo('check_table_number');
+//         $kasir->givePermissionTo('print_invoice');
 
 //     $manajer->givePermissionTo('cek_keuangan');
 //     $kasir->givePermissionTo('cetak_nota');

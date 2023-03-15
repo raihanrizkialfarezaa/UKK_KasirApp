@@ -40,7 +40,13 @@ class MejaController extends Controller
     {
         $data = $request->all();
         $data['status'] = 1;
-        $create = Meja::create($data);
+        $meja = Meja::where('nomor_meja', $request->nomor_meja)->first();
+        if($meja == null) {
+            $create = Meja::create($data);
+        } else {
+            Alert::error('sudah ada meja dengan nomor ini');
+            return redirect()->route('meja.index');
+        }
 
         if ($create) {
             return redirect()->route('meja.index');
