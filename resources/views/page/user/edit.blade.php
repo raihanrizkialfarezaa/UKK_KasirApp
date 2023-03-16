@@ -28,9 +28,9 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Status</label>
                             <select name="status" class="form-control">
-                                <option value="admin">Admin</option>
-                                <option value="kasir">Kasir</option>
-                                <option value="manajer">Manajer</option>
+                                <option value="admin" {{ $user->roles->pluck('name')[0] == 'admin' ? 'selected' : '' }}>Admin</option>
+                                <option value="kasir" {{ $user->roles->pluck('name')[0] == 'kasir' ? 'selected' : '' }}>Kasir</option>
+                                <option value="manajer" {{ $user->roles->pluck('name')[0] == 'manajer' ? 'selected' : '' }}>Manajer</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>

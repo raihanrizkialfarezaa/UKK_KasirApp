@@ -22,15 +22,15 @@ class UserRolePermissionSeeder extends Seeder
             'remember_token' => Str::random(10),
         ];
 
-        $admin = User::create(array_merge([
+        $useradmin = User::create(array_merge([
             'email' => 'admin@gmail.com',
             'name' => 'admin',
         ], $defval));
-        $manajer = User::create(array_merge([
+        $usermanajer = User::create(array_merge([
             'email' => 'manajer@gmail.com',
             'name' => 'manajer',
         ], $defval));
-        $kasir = User::create(array_merge([
+        $userkasir = User::create(array_merge([
             'email' => 'kasir@gmail.com',
             'name' => 'kasir',
         ], $defval));
@@ -50,19 +50,29 @@ class UserRolePermissionSeeder extends Seeder
         $permission = Permission::create(['name' => 'crud_menu']);
         $permission = Permission::create(['name' => 'crud_table']);
 
-        $admin->givePermissionTo('crud_user');
-        $admin->givePermissionTo('crud_menu');
-        $admin->givePermissionTo('crud_table');
-        $manajer->givePermissionTo('see_all_transaction');
-        $manajer->givePermissionTo('check_most');
-        $kasir->givePermissionTo('change_payment');
-        $kasir->givePermissionTo('do_transaction');
-        $kasir->givePermissionTo('see_private_transaction');
-        $kasir->givePermissionTo('check_table_number');
-        $kasir->givePermissionTo('print_invoice');
+        $permission = Permission::create(['name' => 'cetak_nota']);
+        $permission = Permission::create(['name' => 'cek_keuangan']);
 
-        $admin->assignRole('admin');
-        $manajer->assignRole('manajer');
-        $kasir->assignRole('kasir');
+        $manajer = Role::findByName('manajer');
+        $kasir = Role::findByName('kasir');
+        $admin = Role::findByName('admin');
+
+        $admin->givePermissionTo('crud_user');
+            $admin->givePermissionTo('crud_menu');
+            $admin->givePermissionTo('crud_table');
+            $manajer->givePermissionTo('see_all_transaction');
+            $manajer->givePermissionTo('check_most');
+            $kasir->givePermissionTo('change_payment');
+            $kasir->givePermissionTo('do_transaction');
+            $kasir->givePermissionTo('see_private_transaction');
+            $kasir->givePermissionTo('check_table_number');
+            $kasir->givePermissionTo('print_invoice');
+
+        $manajer->givePermissionTo('cek_keuangan');
+        $kasir->givePermissionTo('cetak_nota');
+
+        $useradmin->assignRole('admin');
+        $usermanajer->assignRole('manajer');
+        $userkasir->assignRole('kasir');
     }
 }

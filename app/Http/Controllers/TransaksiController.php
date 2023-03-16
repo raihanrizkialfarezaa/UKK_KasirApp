@@ -46,7 +46,7 @@ class TransaksiController extends Controller
                     } else {
                         $transaksi = [];
                     }
-            } elseif ($id->count() > 0 && $no_pesanan->count() <= 1) {
+            } elseif ($id->count() > 0 && $no_pesanan->count() <= 0) {
                 if ($id->count() > 1) {
                     // dd($id);
                     $transaksi = Transaksi::whereIn('id_user', $id->id)->orderBy('created_at', 'desc')->get();

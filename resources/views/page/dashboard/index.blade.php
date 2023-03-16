@@ -37,6 +37,11 @@
                 subtitle: {
                     text: 'Berikut Menu Terlaris Wikusama Cafe'
                 },
+                xAxis: {
+                    categories: [@foreach ($penjualan as $row)
+                    '<?= $row->nama_menu ?>',
+                    @endforeach],
+                },
                 yAxis: {
                     title: {
                         text: 'Menu Terlaris'

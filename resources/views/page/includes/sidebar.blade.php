@@ -19,8 +19,7 @@
 
                 @can('check_most')
                 <li>
-                    <a href="/dashboard" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
-                            class="badge badge-pill badge-primary float-right">7</span><span>Dashboard</span></a>
+                    <a href="/dashboard" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span>Dashboard</span></a>
                 </li>
                 @endcan
 
