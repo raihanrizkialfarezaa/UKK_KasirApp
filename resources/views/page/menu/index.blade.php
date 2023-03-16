@@ -25,7 +25,7 @@
                                         <tr>
                                             <td>{{ $row->nama_menu }}</td>
                                             <td>{{ $row->jenis }}</td>
-                                            <td>{{ number_format($row->harga) }}</td>
+                                            <td>Rp{{ number_format($row->harga) }}</td>
                                             <th class="text-center">
                                                 <form action="{{ route('menu.edit', $row->id) }}" class="d-inline">
                                                     @method('PUT')

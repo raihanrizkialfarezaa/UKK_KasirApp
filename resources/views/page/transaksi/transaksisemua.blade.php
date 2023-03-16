@@ -12,7 +12,7 @@
                 <form class="" action="/see-all-transaction" method="GET">
                     <div class="form-group m-0">
                         <div class="input-group">
-                            <input type="text" name="nama_karyawan" class="form-control" placeholder="Cari nama kasir atau pelanggan ..." aria-label="Recipient's username">
+                            <input type="text" name="nama_karyawan" class="form-control" placeholder="Cari nama kasir, pelanggan atau nomor pemesanan ..." aria-label="Recipient's username">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
                             </div>

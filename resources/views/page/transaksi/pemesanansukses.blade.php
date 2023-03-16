@@ -46,7 +46,7 @@
                                             {{-- <h3 class="mb-4">{{ $row->quantity }}</h3> --}}
                                             @endforeach
                                             <h3 class="d-block mb-4 mt-4">Nomor Meja : {{ $meja->nomor_meja }}</h3>
-                                            <h3 class="d-block mb-4 mt-4">Tagihan : {{ $transaksi->total_harga }}</h3>
+                                            <h3 class="d-block mb-4 mt-4">Tagihan : Rp{{ number_format($transaksi->total_harga) }}</h3>
                                             <p class="text-muted mb-4 w-75 m-auto">Terima kasih telah memesan produk toko kami</p>
                                         </div>
 

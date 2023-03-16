@@ -43,6 +43,9 @@ class MejaController extends Controller
         $meja = Meja::where('nomor_meja', $request->nomor_meja)->first();
         if($meja == null) {
             $create = Meja::create($data);
+            if($create){
+                Alert::success('Sukses', 'Berhasil Menambahkan Meja');
+            }
         } else {
             Alert::error('sudah ada meja dengan nomor ini');
             return redirect()->route('meja.index');
@@ -59,6 +62,9 @@ class MejaController extends Controller
     public function changeMeja(string $id) 
     { 
         $meja = Meja::where('id', $id)->first();
+        if($meja){
+            Alert::success('Sukses', 'Berhasil Mengubah Nomor Meja');
+        }
         return view('page.meja.change', compact('meja'));
     }
 
@@ -95,6 +101,9 @@ class MejaController extends Controller
         
 
         if ($update) {
+            if($update){
+                Alert::success('Sukses', 'Berhasil Mengubah Nomor Meja');
+            }
             return redirect()->route('meja.index');
         } else {
             return redirect()->route('meja.edit');
@@ -109,6 +118,10 @@ class MejaController extends Controller
         $meja = Meja::where('id', $id)->first();
 
         $delete = $meja->delete();
+
+        if($delete){
+            Alert::success('Sukses', 'Berhasil Menghapus Nomor Meja');
+        }
         
         return redirect()->route('meja.index');
     }

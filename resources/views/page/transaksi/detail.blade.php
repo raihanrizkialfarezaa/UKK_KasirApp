@@ -31,7 +31,9 @@
                                         <b>Total</b>
                                     </td>
                                     <td colspan="2">
-                                        <td>Rp{{ number_format($transaksi->total_harga) }}</td>
+                                        <td>
+                                            <b>Rp{{ number_format($transaksi->total_harga) }}</b>
+                                        </td>
                                     </td>
                                 </tr>
                         </tbody>
