@@ -42,7 +42,9 @@
                                                 <tr>
                                                     <td>{{ $row->tgl_transaksi }}</td>
                                                     <td>{{ $row->status }}</td>
-                                                    <td>{{ $row->total_harga }}</td>
+                                                    <td>
+                                                        Rp{{ number_format($row->total_harga) }}
+                                                    </td>
                                                 </tr>
                                             @empty
                                                 <tr>
@@ -53,7 +55,9 @@
                                         <tr>
                                             <th class="thead-light">Total Pemasukan</th>
                                             <td colspan="1">
-                                                <td>{{ $data['total'] }}</td>
+                                                <td>
+                                                    <b>Rp{{ number_format($data['total']) }}</b>
+                                                </td>
                                             </td>
                                         </tr>
                                     </tbody>
