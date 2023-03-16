@@ -12,6 +12,8 @@ class DashboardController extends Controller
     { 
         $penjualan = DB::table('menus')
                         ->leftJoin('detail_transaksis', 'menus.id','=','detail_transaksis.id_menu')
+                        ->leftJoin('transaksis', 'detail_transaksis.id_transaksi', '=', 'transaksis.id')
+                        ->where('transaksis.status', '=', 'lunas')
                         ->selectRaw('menus.id, menus.nama_menu, SUM(detail_transaksis.quantity) as total')
                         ->groupBy('menus.id')
                         ->orderBy('total', 'asc')

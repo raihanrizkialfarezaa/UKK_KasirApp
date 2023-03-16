@@ -95,13 +95,17 @@ class MejaController extends Controller
     {
         $meja = Meja::where('id', $id)->first();
         
-        $meja = Meja::where('nomor_meja', $request->nomor_meja)->first();
-        if($meja == null) {
+        $mejas = Meja::where('nomor_meja', $request->nomor_meja)->first();
+        if($mejas == null && $request->nomor_meja != null) {
             $update = $meja->update([
                 'nomor_meja' => $request->nomor_meja,
             ]);
+            if($update) {
+                Alert::success('Sukses', 'Berhasil Mengubah Nomor Meja');
+                return redirect()->route('meja.index');
+            }
         } else {
-            Alert::error('sudah ada meja dengan nomor ini');
+            Alert::error('sudah ada meja dengan nomor ini atau nomor meja kosong');
             return redirect()->route('meja.index');
         }
         

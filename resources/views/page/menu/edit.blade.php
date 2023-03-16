@@ -16,8 +16,8 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Jenis</label>
                             <select name="jenis" class="form-control" id="">
-                                <option value="makanan">Makanan</option>
-                                <option value="minuman">Minuman</option>
+                                <option value="makanan" {{ $menu->jenis == 'makanan' ? 'selected' : '' }}>Makanan</option>
+                                <option value="minuman" {{ $menu->jenis == 'minuman' ? 'selected' : '' }}>Minuman</option>
                             </select>
                         </div>
                         <div class="form-group">

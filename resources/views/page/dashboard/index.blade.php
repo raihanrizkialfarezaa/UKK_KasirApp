@@ -61,16 +61,20 @@
                     type: 'bar',
                     name: 'penjualan',
                     data: [
+                     @if ($penjualan->count() <= 0)
+                        {name: 'theres no data',}
+                     @else
                      @foreach ($penjualan as $row)
                         {
                             name: '<?= $row->nama_menu ?>',
                             @if ($row->total <= 0)
-                                y: <?= 1 ?>
+                                y: <?= 0 ?>
                             @else
                                 y: <?= $row->total ?>
                             @endif,
                         },
                     @endforeach
+                     @endif
                     ]
                 }],
                 responsive: {
