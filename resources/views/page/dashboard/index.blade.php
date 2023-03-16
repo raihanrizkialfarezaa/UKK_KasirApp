@@ -43,7 +43,7 @@
                     }
                 },
                 legend: {
-                    layout: 'vertical',
+                    layout: 'vertical', 
                     align: 'right',
                     verticalAlign: 'middle'
                 },
@@ -75,7 +75,7 @@
                         },
                         chartOptions: {
                             legend: {
-                                layout: 'horizontal',
+                                layout: 'vertical',
                                 align: 'center',
                                 verticalAlign: 'bottom'
                             }
